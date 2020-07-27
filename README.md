@@ -1,6 +1,8 @@
-## Demo
+## Visit Test Case
 
-[https://automation-test-cases.now.sh/](https://automation-test-cases.now.sh/)
+[https://automation-test-cases.vercel.app/test/MM-T2](https://automation-test-cases.vercel.app/test/MM-T2)
+
+Note: Change test ID to visit individual test cases
 
 ## Deploy your own
 

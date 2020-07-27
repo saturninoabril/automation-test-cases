@@ -1,4 +1,6 @@
 {
+    "author": "Saturnino Abril",
+    "license": "Apache-2.0",
     "name": "automation-test-cases",
     "version": "1.0.0",
     "scripts": {
