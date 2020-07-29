@@ -19,14 +19,20 @@ const fetcher = async (url) => {
     return data;
 };
 
-const generateContent = (steps) => {
+const generateContent = (data) => {
+    const re = /\/"/gi;
     let content = '';
 
-    for (let i = 0; i < steps.length; i++) {
-        const step = steps[i];
-        const num = steps.length > 1 ? i + 1 : '';
+    if (data?.precondition) {
+        content += '<h3>Test Preparation</h3>';
+        content += data?.precondition.replace(re, '"');
+        content += '<hr>';
+    }
 
-        const re = /\/"/gi;
+    for (let i = 0; i < data?.steps.length; i++) {
+        const step = data?.steps[i];
+        const num = data?.steps.length > 1 ? i + 1 : '';
+
         const {inline} = step;
 
         if (inline?.description) {
@@ -61,9 +67,8 @@ export default function Test({preview}) {
         return <ErrorPage statusCode={404} />;
     }
 
-    const {key, name, steps} = data;
-
-    const content = generateContent(steps);
+    const {key, name, ...otherData} = data;
+    const content = generateContent(otherData);
 
     return (
         <Layout preview={preview}>

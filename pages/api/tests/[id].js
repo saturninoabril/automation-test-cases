@@ -1,8 +1,7 @@
 import fetch from 'node-fetch';
 
 export default async function testCaseHandler({query: {id}}, res) {
-    console.log('testCaseHandler id', id);
-    var options = {
+    const options = {
         method: 'GET',
         headers: {
             'content-type': 'application/json; charset=utf-8',
