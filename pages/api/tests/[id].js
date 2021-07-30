@@ -8,14 +8,14 @@ export default async function testCaseHandler({query: {id}}, res) {
             authorization: process.env.TM4J_API_KEY,
         },
     };
-    const caseResponse = await fetch(`https://api.adaptavist.io/tm4j/v2/testcases/${id}`, options);
+    const caseResponse = await fetch(`https://api.zephyrscale.smartbear.com/v2/testcases/${id}`, options);
 
     const caseJson = await caseResponse.json();
     if (!caseJson) {
         res.status(404).json({message: `Test case for ${id} not found.`});
     }
 
-    const stepResponse = await fetch(`https://api.adaptavist.io/tm4j/v2/testcases/${id}/teststeps`, options);
+    const stepResponse = await fetch(`https://api.zephyrscale.smartbear.com/v2/testcases/${id}/teststeps`, options);
     const stepJson = await stepResponse.json();
     if (!stepJson || !stepJson.values) {
         res.status(404).json({message: `Test step for ${id} not found.`});
